@@ -108,34 +108,26 @@ local openBarber = function()
 end
 
 Citizen.CreateThread(function()
-    for _,v in pairs (Barber.Pos) do
-        local blip = AddBlipForCoord(v)
-        SetBlipSprite(blip, 71)
-        SetBlipScale(blip, 0.60)
-        SetBlipColour(blip, 26)
-        SetBlipAsShortRange(blip, true)
-        BeginTextCommandSetBlipName("STRING")
-        AddTextComponentString("BarberShop")
-        EndTextCommandSetBlipName(blip)
-	--Wz
-        while true do
-            local plyPos = GetEntityCoords(PlayerPedId())
+    while true do
+        local interval = 250
+        for k,v in pairs(Barber.Pos) do
+            local playerPos = GetEntityCoords(PlayerPedId())
             local zone = v
-            local distance = #(plyPos - zone)
-            if distance < 9 then
+            local distance = #(playerPos - zone)
+            if distance <= 9 then
                 interval = 0
                 DrawMarker(22, zone, 0.0, 0.0, 0.0, 0, 0.0, 0.0, 0.45, 0.45, 0.45, 52, 158, 235, 140, 55555, false, true, 2, false, false, false, false)
-            end
-            if distance < 1 then
-                if canInteract then
-                    ESX.ShowHelpNotification('Appuyer sur ~INPUT_CONTEXT~ pour ouvrir le ~y~BarberShop')
-                    if IsControlJustPressed(0, 51) then
-                        canInteract = false
-                        openBarber()
+                if distance <= 1.0 then
+                    if canInteract then
+                        ESX.ShowHelpNotification('Appuyez sur ~INPUT_CONTEXT~ pour accéder au ~b~Barber~s~')
+                        if IsControlJustPressed(0, 51) then
+                            canInteract = false
+                            openBarber()
+                        end
                     end
                 end
             end
-            Wait(interval)
         end
+        Wait(interval)
     end
 end)
