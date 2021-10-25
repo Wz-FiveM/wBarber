@@ -2,6 +2,7 @@
 --- @author Dylan MALANDAIN
 --- @version 2.0.0
 --- @since 2020
+--- W Z 
 ---
 --- RageUI Is Advanced UI Libs in LUA for make beautiful interface like RockStar GAME.
 ---
