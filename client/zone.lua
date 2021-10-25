@@ -117,6 +117,7 @@ Citizen.CreateThread(function()
         BeginTextCommandSetBlipName("STRING")
         AddTextComponentString("BarberShop")
         EndTextCommandSetBlipName(blip)
+	--Wz
         while true do
             local plyPos = GetEntityCoords(PlayerPedId())
             local zone = v
