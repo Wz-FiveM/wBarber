@@ -107,6 +107,7 @@ local openBarber = function()
     end
 end
 
+
 Citizen.CreateThread(function()
     while true do
         local interval = 250

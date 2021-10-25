@@ -9,7 +9,6 @@ shared_scripts {
 
 server_scripts {
 	'@mysql-async/lib/MySQL.lua',
-    '@_GM/imports.lua',
 	'server/**.lua',
 }
 
