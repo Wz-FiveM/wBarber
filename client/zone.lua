@@ -1,12 +1,7 @@
 -- Interaction Zone
 local interval = 250
 local canInteract = true
--- Get Information from player ped
-local cheveux = {} for i = 0, GetNumberOfPedDrawableVariations(PlayerPedId(), 2) - 1, 1 do cheveux[i] = i end
-local barbe = {} for i = 0, GetNumberOfPedDrawableVariations(PlayerPedId(), 1) - 1, 1 do barbe[i] = i end
-local sourcil = {} for i = 0, GetNumHeadOverlayValues(2) -1, 1 do sourcil[i] = i end
-local cheveuxcolor = {} for i = 0, GetNumHairColors(2) -1, 1 do cheveuxcolor[i] = i end
-local barbecolor = {} for i = 0, GetNumHairColors(1) -1, 1 do barbecolor[i] = i end
+
 -- Index for RageUI List
 local index = {cheveux = 0, barbe = 0, sourcil = 0, cheveuxcolor = 0, barbecolor = 0}
 
@@ -42,6 +37,12 @@ local openBarber = function()
     
     while main do
         Citizen.Wait(0)
+	-- Get Information from player ped
+        local cheveux = {} for i = 0, GetNumberOfPedDrawableVariations(PlayerPedId(), 2) - 1, 1 do cheveux[i] = i end
+        local barbe = {} for i = 0, GetNumberOfPedDrawableVariations(PlayerPedId(), 1) - 1, 1 do barbe[i] = i end
+        local sourcil = {} for i = 0, GetNumHeadOverlayValues(2) -1, 1 do sourcil[i] = i end
+        local cheveuxcolor = {} for i = 0, GetNumHairColors(2) -1, 1 do cheveuxcolor[i] = i end
+        local barbecolor = {} for i = 0, GetNumHairColors(1) -1, 1 do barbecolor[i] = i end
         RageUI.IsVisible(main, function()
             RageUI.Button('Modifier votre personnage', nil, {}, true, {}, sub);
         end)
